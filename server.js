@@ -35,6 +35,6 @@ require('./app/routes/category.routes.js')(app);
 require('./app/routes/product.routes.js')(app);
 
 // listen for requests
-app.listen(8080, () => {
-    console.log("Server is listening on port 8080");
+app.listen(process.env.PORT || 8001, () => {
+    console.log("Server is listening on port 8001 for localhost or for CleverCloud on port" + process.env.PORT);
 });
