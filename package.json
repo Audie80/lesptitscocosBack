@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "serve": "nodemon server.js",
-    "start": "server.js"
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "body-parser": "~1.19.0",
