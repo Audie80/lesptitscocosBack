@@ -5,7 +5,8 @@
   "author": "Les Ptits Cocos",
   "private": true,
   "scripts": {
-    "serve": "nodemon server.js"
+    "serve": "nodemon server.js",
+    "main": "server.js"
   },
   "dependencies": {
     "body-parser": "~1.19.0",
