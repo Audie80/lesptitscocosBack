@@ -32,7 +32,9 @@ app.get('/', (req, res) => {
 });
 
 require('./app/routes/category.routes.js')(app);
+require('./app/routes/productcategory.routes.js')(app);
 require('./app/routes/product.routes.js')(app);
+require('./app/routes/shop.routes.js')(app);
 
 // listen for requests
 app.listen(process.env.PORT || 8001, () => {

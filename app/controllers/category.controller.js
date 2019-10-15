@@ -21,7 +21,7 @@ exports.create = (req, res) => {
     });
 }
 
-// Retrieve and return all notes from the database.
+// Find all categories
 exports.findAll = (req, res) => {
         Category.find()
         .then(categories => {
@@ -29,7 +29,18 @@ exports.findAll = (req, res) => {
         }).catch(err => {
             res.status(500).send({
                 message: err.message || "Some error occurred while retrieving notes."
+        });
+    });
+};
 
+// Find a single category
+exports.findOne = (req, res) => {
+    Category.findOne({ 'slug': req.params.category })
+        .then(categories => {
+            res.send(categories);
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving notes."
         });
     });
 };
@@ -40,14 +51,3 @@ exports.update = (req, res) => {
 
 
 };
-
-
-
-
-
-
-
-// Find a single note with a noteId
-//exports.findOne = (req, res) => {
-
-//};

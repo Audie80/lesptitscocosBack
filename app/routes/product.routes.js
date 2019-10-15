@@ -1,75 +1,65 @@
 module.exports = (app) => {
     const products = require('../controllers/product.controller.js');
 
-    // test pour appeller bdd //
-    app.get('/products', products.findAll);
+    // Find all products
+    app.get('/api/produits', products.findAll);
 
-    // test pour creer sur la bdd// 
+    // Find products by category
+    app.get('/api/produits/:category', products.findByCategory);
 
-    app.post('/api/products', products.create);
-
-
-
-    // Retrieve all Notes
-    app.get('/api/produits/:products', products.findAll);
-
-    // Retrieve all Notes
-    app.get('/api/produits/:productsid', products.findAll);
+    // Find products by subcategory
+    app.get('/api/produits/:category/:subcategory', products.findBySubcategory);
 
 
-    // Retrieve all Notes
-    app.get('/api/produits/:products/:subcategory', products.findAll);
-
-
-    app.get( "/api/recherche/:search", products.findAll);
+    //app.get( "/api/recherche/:search", products.findAll);
 
     // find all shops
-    app.get('/api/admin/produits/categories', products.findAll);
+    //app.get('/api/admin/produits/categories', products.findAll);
 
     // create a shops
-    app.post('/api/admin/produits/categories/create', products.create);
+    //app.post('/api/admin/produits/categories/create', products.create);
 
     // update a shops
-    app.put('/api/admin/produits/categories/update', products.update);
+    //app.put('/api/admin/produits/categories/update', products.update);
 
     // delete a shops
-    app.delete('/api/admin/produits/categories/delete', products.delete);
+    //app.delete('/api/admin/produits/categories/delete', products.delete);
 
     // admin show a shops
-    app.get('/api/admin/produits', products.findAll);
+    //app.get('/api/admin/produits', products.findAll);
 
     // create a shops
-    app.post('/api/admin/produits/create', products.create);
+    //app.post('/api/admin/produits/create', products.create);
 
     // update a shops
-    app.put('/api/admin/produits/update', products.update);
+    //app.put('/api/admin/produits/update', products.update);
 
     // delete a shops
-    app.delete('/api/admin/produits/delete', products.delete);
+    //app.delete('/api/admin/produits/delete', products.delete);
 
     // find product of a shop
-    app.get('/api/commercant', products.findAll);
+    //app.get('/api/commercant', products.findAll);
 
     // find product of a shop
-    app.post('/api/commercant', products.findAll);
+    //app.post('/api/commercant', products.findAll);
 
     // Affiche toutes les subcategories
-    app.get('/api/categories/sous_categories', products.findAll);
+    //app.get('/api/categories/sous_categories', products.findAll);
 
     // Affiche toutes les subcategories
-    app.get('/api/categories/:products', products.findAll);
+    //app.get('/api/categories/:products', products.findAll);
 
     //
-    app.get('/api/admin/produits/categories/:sous_categories', products.findAll);
+    //app.get('/api/admin/produits/categories/:sous_categories', products.findAll);
 
     //
-    app.post('/api/admin/produits/categories/sous_categories/create', products.create);
+    //app.post('/api/admin/produits/categories/sous_categories/create', products.create);
 
     //
-    app.put('/api/admin/produits/categories/sous_categories/update', products.update);
+    //app.put('/api/admin/produits/categories/sous_categories/update', products.update);
 
     //
-    app.post('/api/admin/produits/categories/:sous_categories/delete', products.delete);
+    //app.post('/api/admin/produits/categories/:sous_categories/delete', products.delete);
 
 
 

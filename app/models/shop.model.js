@@ -1,20 +1,27 @@
 const mongoose = require('mongoose');
 
-const ShopsSchema = mongoose.Schema({
+const ShopSchema = mongoose.Schema({
     name: String,
     slug: String,
     img: String,
     description: String,
+    balise_title: String,
+    balise_description: String,
     address: String,
     city: String,
     district: String,
     tel: String,
     zipcode: String,
     email: String,
-    site: String,
+    website: String,
     facebook: String,
+    delivery_location: String,
+    category: {
+        name: String,
+        slug: String
+    }
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model('shops', ShopsSchema);
+module.exports = mongoose.model('shops', ShopSchema);
