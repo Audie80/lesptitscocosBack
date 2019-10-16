@@ -10,6 +10,8 @@ module.exports = (app) => {
     // Find products by subcategory
     app.get('/api/produits/:category/:subcategory', products.findBySubcategory);
 
+    // Find one product by slug
+    app.get('/api/produit/:productslug', products.findOne);
 
     //app.get( "/api/recherche/:search", products.findAll);
 

@@ -56,7 +56,7 @@ exports.findByCategory = (req, res) => {
         });
 };
 
-// Find shops by slug
+// Find one shop by slug
 exports.findBySlug = (req, res) => {
     Shop.findOne({ 'slug': req.params.shopslug })
         .then(shops => {

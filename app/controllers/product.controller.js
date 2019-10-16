@@ -44,7 +44,7 @@ exports.findAll = (req, res) => {
             res.send(products);
         }).catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while retrieving notes."
+                message: err.message || "Erreur de récupération des produits."
 
         });
     });
@@ -57,7 +57,7 @@ exports.findByCategory = (req, res) => {
             res.send(products);
         }).catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while retrieving notes."
+                message: err.message || "Erreur de récupération des produits par catégorie."
 
             });
         });
@@ -70,7 +70,25 @@ exports.findBySubcategory = (req, res) => {
             res.send(products);
         }).catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while retrieving notes."
+                message: err.message || "Erreur de récupération des produits par sous-catégorie."
+
+            });
+        });
+};
+
+// Find one product by slug
+exports.findOne = (req, res) => {
+    Product.findOne({ 'slug': req.params.productslug })
+        .then(product => {
+            if (!product) {
+                return res.status(404).send({
+                    message: req.params.productslug + " : ce produit n'existe pas dans la base de données."
+                });
+            }
+            res.send(product);
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || req.params.productslug + "Erreur de récupération de ce produit."
 
             });
         });
@@ -100,29 +118,6 @@ exports.delete = (req, res) => {
 
 };
 
-// Trouver un produit //
-
-// exports.findAll = (req, res) => {
-//     Product.findById(req.params.productsid)
-//     then(product => {
-//         if(!product) {
-//             return res.status(404).send({
-//                 message: "produits not found with id " + req.params.productsid
-//             });
-//         }
-//         res.send(note);
-//     }).catch(err => {
-//         if(err.kind === 'ObjectId') {
-//             return res.status(404).send({
-//                 message: "Note not found with id " + req.params.productsid
-//             });
-//         }
-//         return res.status(500).send({
-//             message: "Error retrieving note with id " + req.params.productsid
-//         });
-//     });
-
-// };
 
 
 // Update a note identified by the noteId in the request
