@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const CategorySchema = mongoose.Schema({
+const ShopCategorySchema = mongoose.Schema({
     name: String,
     slug: String,
     description: String,
@@ -8,4 +8,4 @@ const CategorySchema = mongoose.Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('categories', CategorySchema);
+module.exports = mongoose.model('shopscategories', ShopCategorySchema);

@@ -1,14 +1,14 @@
 module.exports = (app) => {
-    const categories = require('../controllers/category.controller.js');
+    const shopscategories = require('../controllers/shopcategory.controller.js');
 
     //Create a new Note
-    app.post('/categories', categories.create);
+    app.post('/categories', shopscategories.create);
 
     // Find all categories
-    app.get('/api/categories', categories.findAll);
+    app.get('/api/categories', shopscategories.findAll);
 
     // Retrieve a single category
-    app.get('/api/categories/:category', categories.findOne);
+    app.get('/api/categories/:shopcategory', shopscategories.findOne);
 
     // Update a Note with noteId
     //app.put('/notes/:noteId', notes.update);

@@ -31,12 +31,12 @@ app.get('/', (req, res) => {
     res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
 });
 
-require('./app/routes/category.routes.js')(app);
+require('./app/routes/shopcategory.routes.js')(app);
 require('./app/routes/productcategory.routes.js')(app);
 require('./app/routes/product.routes.js')(app);
 require('./app/routes/shop.routes.js')(app);
 
 // listen for requests
 app.listen(process.env.PORT || 8001, () => {
-    console.log("Server is listening on port 8001 for localhost or for CleverCloud on port" + process.env.PORT);
+    console.log("Server is listening on port 8001 or " + process.env.PORT);
 });

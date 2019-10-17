@@ -1,17 +1,17 @@
-const Category = require('../models/category.model.js');
+const ShopCategory = require('../models/shopcategory.model.js');
 
 // Create and Save a new Note
 exports.create = (req, res) => {
 
     // Create a Note
-    const category = new Category({
+    const shopcategory = new ShopCategory({
         name: req.body.name,
         slug: req.body.slug,
         description: req.body.description
     });
 
     // Save Note in the database
-    category.save()
+    shopcategory.save()
     .then(data => {
         res.send(data);
     }).catch(err => {
@@ -23,24 +23,24 @@ exports.create = (req, res) => {
 
 // Find all categories
 exports.findAll = (req, res) => {
-        Category.find()
-        .then(categories => {
-            res.send(categories);
+        ShopCategory.find()
+        .then(shopscategories => {
+            res.send(shopscategories);
         }).catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while retrieving notes."
+                message: err.message || "Erreur de récupération des catégories de commerces."
         });
     });
 };
 
 // Find a single category
 exports.findOne = (req, res) => {
-    Category.findOne({ 'slug': req.params.category })
-        .then(categories => {
-            res.send(categories);
+    ShopCategory.findOne({ 'slug': req.params.shopcategory })
+        .then(shopscategories => {
+            res.send(shopscategories);
         }).catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while retrieving notes."
+                message: err.message || "Erreur de récupération de cette catégorie de commerces."
         });
     });
 };
