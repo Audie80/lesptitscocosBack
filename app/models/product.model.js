@@ -24,8 +24,12 @@ const ProductSchema = mongoose.Schema({
         }
     },
     labels: Array,
-    favorite: Array,
+    favorite: Boolean,
     shopping_cart: Array,
+    shop: {
+        name: String,
+        slug: String
+    }
 }, {
     timestamps: true
 });
