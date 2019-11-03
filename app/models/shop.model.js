@@ -20,7 +20,8 @@ const ShopSchema = mongoose.Schema({
         name: String,
         slug: String
     },
-    products: Array
+    products: Array,
+    favorite: Boolean
 }, {
     timestamps: true
 });

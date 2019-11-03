@@ -94,6 +94,32 @@ exports.findOne = (req, res) => {
         });
 };
 
+// Find products for one shop
+exports.findByShop = (req, res) => {
+    Product.find({ 'shop.slug': req.params.shopslug })
+        .then(products => {
+            res.send(products);
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Erreur de récupération des produits par catégorie."
+
+            });
+        });
+};
+
+// Find products by search
+exports.findBySearch = (req, res) => {
+    Product.find({ 'name': { $regex: req.params.search, $options: 'i' }})
+        .then(products => {
+            res.send(products);
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Erreur de récupération des produits par catégorie."
+
+            });
+        });
+};
+
 // Supprime les sous categorie avec l'id specifié //
 
 exports.delete = (req, res) => {

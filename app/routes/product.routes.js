@@ -13,7 +13,11 @@ module.exports = (app) => {
     // Find one product by slug
     app.get('/api/produit/:productslug', products.findOne);
 
-    //app.get( "/api/recherche/:search", products.findAll);
+    // Find products of one shop
+    app.get('/api/commerces/:category/:shopslug/produits', products.findByShop);
+
+    // Find products by search
+    app.get( "/api/recherche/:search", products.findBySearch);
 
     // find all shops
     //app.get('/api/admin/produits/categories', products.findAll);
