@@ -12,7 +12,7 @@
     "body-parser": "~2.2.2",
     "express": "~4.22.1",
     "mongodb": "~7.2.0",
-    "mongoose": "~6.13.9"
+    "mongoose": "~9.6.2"
   },
   "devDependencies": {
     "chai": "^6.2.2",
