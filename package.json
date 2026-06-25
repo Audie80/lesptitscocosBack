@@ -9,7 +9,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "body-parser": "~2.2.2",
+    "body-parser": "~2.3.0",
     "express": "~5.2.1",
     "mongodb": "~7.3.0",
     "mongoose": "~9.7.0"
