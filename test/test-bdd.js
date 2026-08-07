@@ -3,13 +3,20 @@ import { default as chaiHttp, request } from "chai-http";
 import { expect } from "chai";
 import server from "../server.js";
 import mongoose from "mongoose";
-import bddmongo from "../config/databaseTest.config.js";
+import databaseTestConfig from "../config/databaseTest.config.js";
 import ShopCategory from "../app/models/shopcategory.model.js";
 import ProductCategory from "../app/models/productcategory.model.js";
 import Product from "../app/models/product.model.js";
 import Shop from "../app/models/shop.model.js";
 
 chai.use(chaiHttp);
+
+before(async function () {
+  this.timeout(20000);
+  if (mongoose.connection.readyState === 0 || mongoose.connection.readyState === 2) {
+    await mongoose.connection.asPromise();
+  }
+});
 
 describe("BDD connection", () => {
   describe("/GET home", () => {
@@ -26,11 +33,9 @@ describe("BDD connection", () => {
   });
 
   describe("shopscategories", () => {
-    before(function (done) {
-      ShopCategory.deleteMany({}, function (err) {
-        if (err) throw err;
-        done();
-      });
+    before(async function () {
+      this.timeout(15000);
+      await ShopCategory.deleteMany({});
     });
 
     it("should get all shopscategories when no shopscategories are in database", (done) => {
@@ -79,11 +84,9 @@ describe("BDD connection", () => {
   });
 
   describe("productsCategories", () => {
-    before(function (done) {
-      ProductCategory.deleteMany({}, function (err) {
-        if (err) throw err;
-        done();
-      });
+    before(async function () {
+      this.timeout(15000);
+      await ProductCategory.deleteMany({});
     });
 
     it("should get all productsCategories when no productsCategories are in database", (done) => {
@@ -100,11 +103,9 @@ describe("BDD connection", () => {
   });
 
   describe("products", () => {
-    before(function (done) {
-      Product.deleteMany({}, function (err) {
-        if (err) throw err;
-        done();
-      });
+    before(async function () {
+      this.timeout(15000);
+      await Product.deleteMany({});
     });
 
     it("should get all products when no products are in database", (done) => {
@@ -182,11 +183,9 @@ describe("BDD connection", () => {
   });
 
   describe("shops", () => {
-    before(function (done) {
-      Shop.deleteMany({}, function (err) {
-        if (err) throw err;
-        done();
-      });
+    before(async function () {
+      this.timeout(15000);
+      await Shop.deleteMany({});
     });
 
     it("should get all shops when no shops are in database", (done) => {
@@ -227,8 +226,8 @@ describe("BDD connection", () => {
 });
 
 // Fermer proprement le serveur à la fin des tests
-after(function (done) {
-  server.close(() => {
-    mongoose.connection.close(() => done());
-  });
+after(async function () {
+  this.timeout(15000);
+  await new Promise((resolve) => server.close(resolve));
+  await mongoose.connection.close();
 });
