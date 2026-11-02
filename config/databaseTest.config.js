@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 export default {
-  url: 'mongodb+srv://Vercel-Admin-lesptitscocos-test-bdd:VXpjKNh1DHQyN4qb@lesptitscocos-test-bdd.fssdywl.mongodb.net/?retryWrites=true&w=majority',
+  url: process.env.MONGO_ADDON_URL_TEST,
 };
