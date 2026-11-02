@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "test": "NODE_ENV=test mocha"
+    "test": "export NODE_ENV=test && mocha"
   },
   "overrides": {
     "js-yaml": "4.3.2"
